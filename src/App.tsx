@@ -5,20 +5,22 @@ import Button from "./components/ui/Button/Button";
 import Input from "./components/ui/Input/Input";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <div className="card">
-
         <div className="button-container">
-          <Button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
+          <Button variant="primary" size="small">
+            Small Primary
+          </Button>
+          <Button variant="secondary" size="medium">
+            Medium Secondary
+          </Button>
+          <Button variant="danger" size="large">
+            Large Danger
           </Button>
         </div>
-
-
 
         <div className="input-container">
           <Input
@@ -38,8 +40,6 @@ function App() {
           />
           <Input placeholder="Disabled input" disabled />
         </div>
-
-
 
         <div className="modal-container">
           <Button variant="primary" onClick={() => setOpen(true)}>
@@ -65,10 +65,6 @@ function App() {
             </div>
           </Modal>
         </div>
-
-
-
-
       </div>
     </>
   );

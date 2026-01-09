@@ -1,23 +1,19 @@
 import React from "react";
+import Button from "../../ui/Button/Button";
 import s from "./Modal.module.css";
 
+
 export type ModalProps = {
-  /** Управляет видимостью модального окна */
   isOpen: boolean;
-  /** Закрытие модального окна */
   onClose: () => void;
-  /** Вариант оформления */
   variant?: "primary" | "secondary" | "danger";
-  /** Размер модального окна */
   size?: "small" | "medium" | "large";
-  /** Дополнительные классы */
   className?: string;
-  /** Контент модального окна */
   children: React.ReactNode;
 };
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
-  ({ isOpen, onClose, variant = "primary", size = "mediun", className, children }, ref) => {
+  ({ isOpen, onClose, variant = "primary", size = "medium", className, children }, ref) => {
     if (!isOpen) return null;
 
     return (
@@ -25,11 +21,18 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
         <div
           ref={ref}
           className={`${s.modal} ${s[variant]} ${s[size]} ${className || ""}`}
-          onClick={(e) => e.stopPropagation()} // чтобы клик внутри не закрывал
+          onClick={(e) => e.stopPropagation()}
         >
-          <button className={s.close} onClick={onClose}>
+          {/* Кнопка закрытия через твой Button */}
+          <Button
+            variant="secondary"
+            className={s.close}
+            onClick={onClose}
+            aria-label="Закрыть модалку"
+          >
             ×
-          </button>
+          </Button>
+
           <div className={s.content}>{children}</div>
         </div>
       </div>

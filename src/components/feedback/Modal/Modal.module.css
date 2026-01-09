@@ -51,12 +51,10 @@
     position: absolute;
     top: 0.5em;
     right: 0.75em;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    line-height: 1;
   }
-  
   .content {
     margin-top: 1.5em;
   }
