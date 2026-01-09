@@ -4,5 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
-
+.card{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
 
