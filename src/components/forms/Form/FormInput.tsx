@@ -1,10 +1,11 @@
-import React from "react";
 import { useFormContext, FieldValues, Path, get } from "react-hook-form";
 import Input from "../../ui/Input/Input";
 
 
 type FormInputProps<TValues extends FieldValues> = {
-  name: Path<TValues>;
+  name: Path<TValues>; //Это «умный» тип из RHF. Если у вас в схеме есть поле email, 
+  //то Path разрешит передать в name только строку "email". Если вы опечатаетесь (напишете "emial"), 
+  //TypeScript выдаст ошибку еще до запуска кода.
   label: string;
   type?: string;
 };

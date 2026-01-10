@@ -3,15 +3,15 @@ import { useForm, FormProvider, FieldValues, DefaultValues } from "react-hook-fo
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-type AnyObject = Record<string, unknown>;
-
-type FormProps<TValues extends FieldValues> = {
+type FormProps<TValues extends FieldValues> = { //Это ограничение говорит, что форма должна быть объектом, где ключи — строки.
   // Используем z.ZodType<TValues, any, any> чтобы разрешить любые входные данные,
   // при условии, что выходные соответствуют TValues
   schema: z.ZodType<TValues, any, any>;
   defaultValues?: DefaultValues<TValues>;
-  onSubmit: (data: TValues) => void;
-  children: React.ReactNode;
+  // Делаем onSubmit асинхронным, чтобы handleSubmit понимал, когда форма закончила работу
+  onSubmit: (data: TValues) => Promise<void> | void;
+  // Позволяем детям быть функцией, чтобы получить доступ к состоянию формы напрямую
+  children: React.ReactNode | ((methods: ReturnType<typeof useForm<TValues>>) => React.ReactNode);
   className?: string;
 };
 
@@ -23,7 +23,6 @@ export function Form<TValues extends FieldValues>({
   className,
 }: FormProps<TValues>) {
   const methods = useForm<TValues>({
-    // Теперь типы сойдутся автоматически
     resolver: zodResolver(schema),
     defaultValues,
     mode: "onBlur",
@@ -31,8 +30,13 @@ export function Form<TValues extends FieldValues>({
 
   return (
     <FormProvider {...methods}>
-      <form className={className} onSubmit={methods.handleSubmit(onSubmit)} noValidate>
-        {children}
+      <form 
+        className={className} 
+        onSubmit={methods.handleSubmit(onSubmit)} 
+        noValidate
+      >
+        {/* Если children это функция — вызываем её, если нет — рендерим как обычно */}
+        {typeof children === "function" ? children(methods) : children}
       </form>
     </FormProvider>
   );
