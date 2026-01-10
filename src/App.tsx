@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Modal from "./components/feedback/Modal/Modal";
+import LoginForm from "./components/forms/Form/LoginForm";
 import Button from "./components/ui/Button/Button";
 import Input from "./components/ui/Input/Input";
 
@@ -64,6 +65,11 @@ function App() {
               </Button>
             </div>
           </Modal>
+        </div>
+
+
+        <div>
+          <LoginForm/>
         </div>
       </div>
     </>
