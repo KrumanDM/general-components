@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../../ui/Button/Button";
+
 import s from "./Modal.module.css";
 
 

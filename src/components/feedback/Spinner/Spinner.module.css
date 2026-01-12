@@ -1,0 +1,27 @@
+.spinner {
+    display: inline-flex;
+    animation: rotate 1s linear infinite;
+  }
+  
+  .path {
+    opacity: 0.2; /* Фоновое кольцо (опционально) */
+    stroke-dasharray: 40, 200;
+    stroke-linecap: round;
+    opacity: 1;
+  }
+  
+  /* Размеры */
+  .small { width: 1em; height: 1em; }
+  .medium { width: 1.5em; height: 1.5em; }
+  .large { width: 2em; height: 2em; }
+  
+  /* Варианты цвета */
+  .current { color: currentColor; } /* Наследует цвет текста кнопки */
+  .primary { color: #1a1a1a; }
+  .secondary { color: #f0f0f0; }
+  .inverted { color: #fff; }
+  
+  @keyframes rotate {
+    100% { transform: rotate(360deg); }
+  }
+  
