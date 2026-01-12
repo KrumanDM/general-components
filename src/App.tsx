@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import Modal from "./components/feedback/Modal/Modal";
+import Spinner from "./components/feedback/Spinner/Spinner";
 import LoginForm from "./components/forms/Form/LoginForm";
 import Button from "./components/ui/Button/Button";
+
 import Input from "./components/ui/Input/Input";
 
 function App() {
@@ -68,8 +70,12 @@ function App() {
         </div>
 
 
-        <div>
+        <div className="login-container">
           <LoginForm/>
+        </div>
+
+        <div className="spinner-container">
+          <Spinner size="large" variant="current"/>
         </div>
       </div>
     </>
