@@ -1,0 +1,58 @@
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left, .right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .center {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  /* Стили для ссылок внутри хедера */
+  .center a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
+  }
+  
+  .center a:hover {
+    opacity: 0.7;
+  }
+  
+  /* Адаптивность: скрываем центр на мобилках (базовый пример) */
+  @media (max-width: 768px) {
+    .center {
+      display: none;
+    }
+  }
+  
