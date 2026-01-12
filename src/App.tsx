@@ -3,15 +3,54 @@ import "./App.css";
 import Modal from "./components/feedback/Modal/Modal";
 import Spinner from "./components/feedback/Spinner/Spinner";
 import LoginForm from "./components/forms/Form/LoginForm";
+import Header, {
+  HeaderCenter,
+  HeaderLeft,
+  HeaderRight,
+} from "./components/layout/Header/Header";
 import Button from "./components/ui/Button/Button";
 
 import Input from "./components/ui/Input/Input";
 
 function App() {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <>
+      <header className="header-container">
+        <Header sticky>
+          <HeaderLeft>
+            <div style={{ fontWeight: 800, fontSize: "1.2rem" }}>MY_BRAND</div>
+          </HeaderLeft>
+
+          <HeaderCenter>
+            <a href="#features">Возможности</a>
+            <a href="#pricing">Цены</a>
+            <a href="#about">О нас</a>
+          </HeaderCenter>
+
+          <HeaderRight>
+            {/* Используем вашу кнопку со встроенным спиннером */}
+            <Button
+              variant="secondary"
+              size="small"
+              onClick={() => setIsLoading(!isLoading)}
+            >
+              {isLoading ? "Загрузка..." : "Войти"}
+              {isLoading && (
+                <Spinner size="small" style={{ marginLeft: "8px" }} />
+              )}
+            </Button>
+
+            <Button variant="primary" size="small">
+              Регистрация
+            </Button>
+          </HeaderRight>
+        </Header>
+      </header>
+
+      
       <div className="card">
         <div className="button-container">
           <Button variant="primary" size="small">
@@ -69,13 +108,12 @@ function App() {
           </Modal>
         </div>
 
-
         <div className="login-container">
-          <LoginForm/>
+          <LoginForm />
         </div>
 
         <div className="spinner-container">
-          <Spinner size="large" variant="current"/>
+          <Spinner size="large" variant="current" />
         </div>
       </div>
     </>
