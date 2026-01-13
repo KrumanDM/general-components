@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 4px;
+    align-items: center;
+  }
+  
+  .dots {
+    padding: 0 8px;
+    color: #666;
+    user-select: none;
+  }
+  
+  /* Стилизация активной кнопки, если variant="primary" недостаточно */
+  .active {
+    font-weight: bold;
+    pointer-events: none;
+  }
+  
+  /* Адаптивность: скрываем пагинацию на очень маленьких экранах или упрощаем */
+  @media (max-width: 480px) {
+    .dots {
+      display: none;
+    }
+  }
+  

@@ -8,6 +8,7 @@ import Header, {
   HeaderLeft,
   HeaderRight,
 } from "./components/layout/Header/Header";
+import Pagination from "./components/navigation/pagination/Pagination";
 import Button from "./components/ui/Button/Button";
 
 import Input from "./components/ui/Input/Input";
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <>
-      <header className="header-container">
+      <header>
         <Header sticky>
           <HeaderLeft>
             <div style={{ fontWeight: 800, fontSize: "1.2rem" }}>MY_BRAND</div>
@@ -114,6 +115,10 @@ function App() {
 
         <div className="spinner-container">
           <Spinner size="large" variant="current" />
+        </div>
+
+        <div className="pagination-container">
+          <Pagination currentPage={1} totalPages={5} onPageChange={()=>{}}/>
         </div>
       </div>
     </>
