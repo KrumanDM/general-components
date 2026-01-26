@@ -20,6 +20,7 @@ function App() {
   return (
     <>
     <div>
+      <h1>Team B</h1>
       <h1>Team A</h1>
     </div>
       <header>
